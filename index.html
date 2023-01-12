@@ -1,0 +1,14 @@
+<html lang="en">
+  <head>
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Turn:</h1>
+    <h1 id="playerTurn"></h1>
+    <div id="board"></div>
+    <button onclick="socket.emit('restart-game')">Restart</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
