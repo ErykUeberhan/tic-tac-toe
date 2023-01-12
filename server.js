@@ -4,6 +4,7 @@ const app = express();
 app.use(cors());
 const http = require("http").Server(app);
 const io = require("socket.io")(http, { cors: { origin: "*" } });
+const PORT = process.env.PORT || 5000;
 
 let board = [
   ["", "", ""],
@@ -123,8 +124,8 @@ io.on("connection", function (socket) {
   });
 });
 
-http.listen(3000, function () {
-  console.log("Server running on port 3000");
+http.listen(PORT, function () {
+  console.log("Server running on port " + PORT);
 });
 
 app.get("/", function (req, res) {
