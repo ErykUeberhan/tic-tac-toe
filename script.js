@@ -1,4 +1,7 @@
-const socket = io("http://localhost:3000");
+// const socket = io("https://tic-tac-toe-hbm6.onrender.com");
+const socket = io("http://localhost:5000");
+const cross = document.getElementById("cross").cloneNode(true);
+const circle = document.getElementById("circle").cloneNode(true);
 
 //function to render the game board
 function renderBoard() {
@@ -27,13 +30,16 @@ function cellClicked(event) {
 }
 
 socket.on("player-move", function (move) {
-  console.log("move.player", move.player);
+  const symbol =
+    move.char === "X"
+      ? document.getElementById("cross").cloneNode(true)
+      : document.getElementById("circle").cloneNode(true);
   let cell = document.querySelector(
     `[data-row="${move.row}"][data-col="${move.col}"]`
   );
 
   if (!cell.textContent) {
-    cell.textContent = move.char;
+    cell.appendChild(symbol);
     document.getElementById("playerTurn").innerHTML =
       move.player !== socket.id ? "Your turn" : "Opponent's turn";
   }

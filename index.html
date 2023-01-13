@@ -2,12 +2,25 @@
   <head>
     <title>TicTacToe</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Turn:</h1>
-    <h1 id="playerTurn"></h1>
+    <div id="title">
+      <div id="circle">
+        <div></div>
+      </div>
+      <h1 id="playerTurn"></h1>
+      <div id="cross">
+        <div></div>
+      </div>
+    </div>
     <div id="board"></div>
-    <button onclick="socket.emit('restart-game')">Restart</button>
+    <button id="restart" onclick="socket.emit('restart-game')">Restart</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
     <script src="script.js"></script>
   </body>

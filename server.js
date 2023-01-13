@@ -18,6 +18,17 @@ let player1 = null;
 let player2 = null;
 let isGameReady = false;
 
+function restart() {
+  board = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
+  currentPlayer = "X";
+  gameOver = false;
+  io.emit("game-restarted", "game restarted");
+}
+
 // function to check for winner
 function checkForWinner() {
   // Check rows
@@ -86,6 +97,7 @@ io.on("connection", function (socket) {
     } else if (socket === player2) {
       player2 = null;
     }
+    restart();
     io.emit("player-disconnected", "A player disconnected");
   });
 
@@ -93,6 +105,8 @@ io.on("connection", function (socket) {
     if (!isGameReady) {
       return;
     }
+
+    if (move.row === null || move.col === null) return;
     if (move.player === turn && !board[move.row][move.col]) {
       turn = move.player === player1.id ? player2.id : player1.id;
       board[move.row][move.col] = move.player === player1.id ? "X" : "O";
@@ -103,8 +117,7 @@ io.on("connection", function (socket) {
         io.emit("game-over", winner);
         gameOver = true;
         currentPlayer = null;
-        // player1 = null;
-        // player2 = null;
+        restart();
       } else {
         move.char = move.player === player1.id ? "X" : "O";
         io.emit("player-move", move);

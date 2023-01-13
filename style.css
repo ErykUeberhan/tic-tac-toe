@@ -1,10 +1,91 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #192a32;
+  color: #a8bec9;
+  font-family: "Ubuntu", sans-serif;
+}
+
 .cell {
-  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100px;
-  width: 100px;
+  width: 120px;
+  border-radius: 10px;
+  background-color: #1f3540;
+  box-shadow: 0 10px #102129;
+}
+
+.cell:hover {
+  background-color: #172730;
 }
 
 #board {
   display: flex;
   flex-direction: row;
+  gap: 14px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #f2b237;
+}
+
+#circle > div {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #1f3540;
+}
+
+#cross {
+  width: 50px;
+  height: 15px;
+  background-color: #31c4be;
+  transform: rotate(45deg);
+}
+
+#cross > div {
+  width: 50px;
+  height: 15px;
+  background-color: #31c4be;
+  transform: rotate(90deg);
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 14px;
+}
+
+#restart {
+  background-color: #a8bec9;
+  color: #192a32;
+  height: 80px;
+  width: 120px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#restart:hover {
+  background-color: #93a6af;
 }
